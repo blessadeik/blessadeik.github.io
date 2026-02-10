@@ -1,44 +1,1131 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bootstrap</title>
-    
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>A Quieter America – INCE</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+/* ─── DESIGN TOKENS ─────────────────────────────────── */
+:root {
+  --navy:        #0b2545;
+  --blue:        #1363a6;
+  --blue-mid:    #1b7ec8;
+  --blue-light:  #e8f3fc;
+  --sky:         #cfe8f7;
+  --white:       #ffffff;
+  --off-white:   #f7f9fc;
+  --border:      #dce7f0;
+  --text:        #0b2545;
+  --text-mid:    #3d5a73;
+  --text-light:  #7392a8;
+  --red:         #c0392b;
+  --gold:        #b08800;
+  --success:     #1a7f5a;
+  --radius:      6px;
+  --shadow-sm:   0 2px 8px rgba(11,37,69,0.07);
+  --shadow-md:   0 6px 24px rgba(11,37,69,0.11);
+  --shadow-lg:   0 16px 48px rgba(11,37,69,0.14);
+}
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"     
-    rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" 
-    crossorigin="anonymous">
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Inter',sans-serif;
+  background:var(--white);
+  color:var(--text);
+  line-height:1.65;
+  font-size:16px;
+}
 
-    <link rel="stylesheet" href="style.css">
+/* ─── UTILITY ────────────────────────────────────────── */
+.container{ max-width:1180px; margin:0 auto; padding:0 2.5rem; }
+.tag{
+  display:inline-block;
+  font-size:0.7rem; font-weight:700;
+  letter-spacing:0.12em; text-transform:uppercase;
+  color:var(--blue); background:var(--blue-light);
+  border:1px solid var(--sky);
+  padding:0.3rem 0.85rem; border-radius:100px;
+  margin-bottom:1rem;
+}
+.tag-white{ color:white; background:rgba(255,255,255,0.12); border-color:rgba(255,255,255,0.25); }
+
+/* ─── TOPBAR ─────────────────────────────────────────── */
+.topbar{
+  background:var(--navy);
+  padding:0.55rem 0;
+  font-size:0.78rem;
+  color:rgba(255,255,255,0.55);
+  letter-spacing:0.03em;
+}
+.topbar-inner{
+  display:flex; align-items:center; justify-content:space-between;
+}
+.topbar a{ color:rgba(255,255,255,0.55); text-decoration:none; transition:color .2s; }
+.topbar a:hover{ color:white; }
+.topbar-links{ display:flex; gap:1.5rem; }
+
+/* ─── NAVBAR ─────────────────────────────────────────── */
+nav{
+  position:sticky; top:0; z-index:200;
+  background:var(--white);
+  border-bottom:1px solid var(--border);
+  box-shadow:var(--shadow-sm);
+}
+.nav-inner{
+  display:flex; align-items:center;
+  justify-content:space-between;
+  height:68px;
+}
+.nav-logo{
+  display:flex; align-items:center; gap:0.7rem;
+  text-decoration:none;
+}
+.nav-logo-icon{
+  width:38px; height:38px;
+  background:var(--navy);
+  border-radius:6px;
+  display:flex; align-items:center; justify-content:center;
+}
+.nav-logo-icon svg{ width:22px; height:22px; }
+.nav-logo-text{
+  font-family:'Libre Baskerville',serif;
+  font-size:1.1rem;
+  color:var(--navy);
+  line-height:1.2;
+}
+.nav-logo-text span{ display:block; font-size:0.68rem; font-family:'Inter',sans-serif; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:var(--blue); margin-top:1px; }
+
+.nav-links{
+  display:flex; align-items:center;
+  list-style:none; gap:0.25rem;
+}
+.nav-links a{
+  color:var(--text-mid);
+  text-decoration:none;
+  font-size:0.875rem;
+  font-weight:500;
+  padding:0.4rem 0.85rem;
+  border-radius:var(--radius);
+  transition:background .18s, color .18s;
+}
+.nav-links a:hover{ background:var(--blue-light); color:var(--blue); }
+.nav-links .has-sub{ position:relative; }
+.nav-links .has-sub > a::after{ content:' ▾'; font-size:0.65rem; }
+
+.nav-actions{ display:flex; align-items:center; gap:0.75rem; }
+.btn{ display:inline-flex; align-items:center; gap:0.4rem; text-decoration:none; font-weight:600; font-size:0.875rem; border-radius:var(--radius); padding:0.55rem 1.25rem; transition:all .18s; border:1.5px solid transparent; cursor:pointer; }
+.btn-outline{ border-color:var(--border); color:var(--text-mid); background:transparent; }
+.btn-outline:hover{ border-color:var(--blue); color:var(--blue); }
+.btn-primary{ background:var(--blue); color:white; border-color:var(--blue); }
+.btn-primary:hover{ background:var(--navy); border-color:var(--navy); }
+.btn-white{ background:white; color:var(--navy); border-color:white; }
+.btn-white:hover{ background:var(--sky); }
+
+/* ─── HERO ───────────────────────────────────────────── */
+.hero{
+  background:var(--navy);
+  position:relative;
+  overflow:hidden;
+  padding:5.5rem 0 0;
+}
+/* subtle grid overlay */
+.hero::before{
+  content:'';
+  position:absolute; inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size:60px 60px;
+  pointer-events:none;
+}
+/* soft glow */
+.hero-glow{
+  position:absolute;
+  width:700px; height:500px;
+  background:radial-gradient(ellipse, rgba(27,126,200,0.35) 0%, transparent 68%);
+  top:-80px; right:-100px;
+  pointer-events:none;
+}
+.hero-glow-2{
+  position:absolute;
+  width:400px; height:300px;
+  background:radial-gradient(ellipse, rgba(19,99,166,0.25) 0%, transparent 68%);
+  bottom:60px; left:5%;
+  pointer-events:none;
+}
+
+.hero-inner{
+  position:relative; z-index:2;
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:3rem; align-items:center;
+}
+.hero-content{ padding-bottom:5rem; }
+.hero-content .tag{ margin-bottom:1.25rem; }
+.hero-content h1{
+  font-family:'Libre Baskerville',serif;
+  font-size:clamp(2.4rem,4.5vw,3.4rem);
+  color:white;
+  line-height:1.15;
+  margin-bottom:1.25rem;
+  letter-spacing:-0.01em;
+}
+.hero-content h1 em{ color:#72c3f0; font-style:italic; }
+.hero-content p{
+  color:rgba(255,255,255,0.62);
+  font-size:1.05rem;
+  font-weight:300;
+  max-width:480px;
+  margin-bottom:2.25rem;
+}
+.hero-btns{ display:flex; gap:0.85rem; flex-wrap:wrap; }
+
+.hero-visual{
+  position:relative;
+  align-self:flex-end;
+  padding-bottom:0;
+}
+/* Mock noise map card */
+.map-card{
+  background:rgba(255,255,255,0.06);
+  backdrop-filter:blur(12px);
+  border:1px solid rgba(255,255,255,0.12);
+  border-radius:12px 12px 0 0;
+  overflow:hidden;
+  box-shadow:var(--shadow-lg);
+  transform:translateY(8px);
+}
+.map-card-header{
+  background:rgba(255,255,255,0.08);
+  padding:0.85rem 1.25rem;
+  display:flex; align-items:center; justify-content:space-between;
+  border-bottom:1px solid rgba(255,255,255,0.08);
+}
+.map-card-title{ color:white; font-size:0.82rem; font-weight:600; letter-spacing:0.04em; text-transform:uppercase; }
+.live-badge{
+  display:flex; align-items:center; gap:0.45rem;
+  font-size:0.72rem; color:#72c3f0; font-weight:600;
+}
+.live-dot{
+  width:7px; height:7px; border-radius:50%;
+  background:#72c3f0;
+  animation:blink 2s ease-in-out infinite;
+}
+@keyframes blink{ 0%,100%{opacity:1;}50%{opacity:.25;} }
+
+.map-body{
+  padding:1.5rem;
+  min-height:260px;
+  position:relative;
+  overflow:hidden;
+}
+/* Simulated heatmap via SVG blobs */
+.map-svg-bg{
+  position:absolute; inset:0;
+  width:100%; height:100%;
+}
+.map-legend{
+  position:absolute; bottom:1rem; right:1rem;
+  display:flex; flex-direction:column; gap:0.35rem;
+  background:rgba(11,37,69,0.75); border-radius:6px; padding:0.65rem 0.85rem;
+}
+.legend-row{ display:flex; align-items:center; gap:0.5rem; font-size:0.7rem; color:rgba(255,255,255,0.65); }
+.legend-dot{ width:10px; height:10px; border-radius:50%; flex-shrink:0; }
+
+.map-visit-btn{
+  display:block; text-align:center;
+  background:rgba(19,99,166,0.7);
+  border-top:1px solid rgba(255,255,255,0.1);
+  padding:0.75rem;
+  color:rgba(255,255,255,0.8);
+  text-decoration:none;
+  font-size:0.82rem; font-weight:600;
+  letter-spacing:0.04em;
+  transition:background .2s;
+}
+.map-visit-btn:hover{ background:rgba(27,126,200,0.85); color:white; }
+
+/* ─── STATS BAR ──────────────────────────────────────── */
+.stats-bar{
+  background:var(--blue);
+  padding:2rem 0;
+}
+.stats-inner{
+  display:grid; grid-template-columns:repeat(4,1fr);
+  gap:0; border-radius:8px; overflow:hidden;
+}
+.stat-item{
+  padding:1.25rem 2rem;
+  border-right:1px solid rgba(255,255,255,0.18);
+  text-align:center;
+}
+.stat-item:last-child{ border-right:none; }
+.stat-num{
+  font-family:'Libre Baskerville',serif;
+  font-size:2.1rem; color:white; display:block;
+  line-height:1.1;
+}
+.stat-label{
+  font-size:0.78rem; color:rgba(255,255,255,0.65);
+  font-weight:400; margin-top:0.25rem;
+}
+
+/* ─── SECTION BASE ───────────────────────────────────── */
+.section{ padding:5.5rem 0; }
+.section-alt{ background:var(--off-white); }
+.section-header{ max-width:620px; margin-bottom:3rem; }
+.section-header h2{
+  font-family:'Libre Baskerville',serif;
+  font-size:clamp(1.9rem,3.5vw,2.5rem);
+  line-height:1.22; margin-bottom:0.75rem;
+  letter-spacing:-0.01em;
+}
+.section-header p{ color:var(--text-mid); font-size:1rem; font-weight:300; }
+
+/* centered header variant */
+.section-header-center{ text-align:center; max-width:620px; margin:0 auto 3rem; }
+
+/* ─── CARD COMPONENTS ────────────────────────────────── */
+.grid-2{ display:grid; grid-template-columns:repeat(2,1fr); gap:1.5rem; }
+.grid-3{ display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
+.grid-4{ display:grid; grid-template-columns:repeat(4,1fr); gap:1.25rem; }
+.grid-2-3{ display:grid; grid-template-columns:2fr 3fr; gap:2rem; align-items:start; }
+
+/* PRIMARY FEATURE CARD */
+.f-card{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:2rem;
+  transition:all .2s;
+  cursor:pointer;
+  text-decoration:none;
+  color:inherit;
+  display:flex; flex-direction:column; gap:0.85rem;
+  box-shadow:var(--shadow-sm);
+}
+.f-card:hover{
+  border-color:var(--blue-mid);
+  box-shadow:var(--shadow-md);
+  transform:translateY(-3px);
+}
+.f-card-icon{
+  width:48px; height:48px; border-radius:10px;
+  background:var(--blue-light);
+  display:flex; align-items:center; justify-content:center;
+  font-size:1.4rem;
+}
+.f-card h3{
+  font-family:'Libre Baskerville',serif;
+  font-size:1.1rem; line-height:1.3;
+}
+.f-card p{
+  font-size:0.88rem; color:var(--text-mid);
+  font-weight:300; line-height:1.6; flex:1;
+}
+.f-card-link{
+  font-size:0.82rem; color:var(--blue);
+  font-weight:600; letter-spacing:0.02em;
+  margin-top:0.25rem;
+  display:flex; align-items:center; gap:0.3rem;
+}
+.f-card-link::after{ content:'→'; }
+
+/* BORDERED LIST CARD (community noise subtopics) */
+.list-card{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:10px;
+  overflow:hidden;
+  box-shadow:var(--shadow-sm);
+}
+.list-card-header{
+  padding:1.25rem 1.5rem;
+  background:var(--navy);
+  color:white;
+}
+.list-card-header h3{ font-family:'Libre Baskerville',serif; font-size:1.1rem; }
+.list-card-header p{ color:rgba(255,255,255,0.55); font-size:0.82rem; margin-top:0.25rem; }
+.list-item{
+  display:flex; align-items:center; gap:1rem;
+  padding:1rem 1.5rem;
+  border-bottom:1px solid var(--border);
+  text-decoration:none;
+  color:var(--text);
+  transition:background .15s;
+  cursor:pointer;
+}
+.list-item:last-child{ border-bottom:none; }
+.list-item:hover{ background:var(--blue-light); }
+.list-item-icon{
+  width:36px; height:36px; border-radius:8px;
+  background:var(--blue-light);
+  display:flex; align-items:center; justify-content:center;
+  font-size:1rem; flex-shrink:0;
+}
+.list-item-text{ flex:1; }
+.list-item-text strong{ display:block; font-size:0.9rem; font-weight:600; }
+.list-item-text span{ font-size:0.8rem; color:var(--text-light); }
+.list-item-arrow{ color:var(--text-light); font-size:0.9rem; }
+
+/* ─── NOISE MAP SECTION ──────────────────────────────── */
+.map-section{
+  background:var(--navy);
+  padding:5.5rem 0;
+  position:relative;
+  overflow:hidden;
+}
+.map-section::before{
+  content:'';
+  position:absolute; inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size:40px 40px;
+  pointer-events:none;
+}
+.map-section-inner{
+  position:relative; z-index:2;
+  display:grid; grid-template-columns:1fr 1.6fr;
+  gap:4rem; align-items:center;
+}
+.map-section-text h2{
+  font-family:'Libre Baskerville',serif;
+  font-size:clamp(1.9rem,3vw,2.5rem);
+  color:white; line-height:1.2; margin-bottom:1rem;
+}
+.map-section-text p{
+  color:rgba(255,255,255,0.6);
+  font-size:0.97rem; font-weight:300; margin-bottom:2rem;
+  line-height:1.7;
+}
+/* Big featured map mockup */
+.big-map{
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.12);
+  border-radius:12px; overflow:hidden;
+  box-shadow:0 24px 64px rgba(0,0,0,0.3);
+}
+.big-map-toolbar{
+  background:rgba(255,255,255,0.07);
+  border-bottom:1px solid rgba(255,255,255,0.08);
+  padding:0.85rem 1.2rem;
+  display:flex; align-items:center; gap:0.6rem;
+}
+.tb-dot{ width:10px; height:10px; border-radius:50%; }
+.big-map-canvas{
+  width:100%; height:280px;
+  position:relative; overflow:hidden;
+}
+.big-map-canvas svg{ width:100%; height:100%; }
+
+/* ─── DANGERS OF NOISE — db SCALE ────────────────────── */
+.db-section{ background:var(--off-white); }
+.db-scale-wrap{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:2rem;
+  box-shadow:var(--shadow-sm);
+}
+.db-row{
+  display:flex; align-items:center; gap:1rem;
+  padding:0.65rem 0;
+  border-bottom:1px solid var(--border);
+}
+.db-row:last-child{ border-bottom:none; }
+.db-source{ font-size:0.85rem; font-weight:500; color:var(--text); min-width:170px; }
+.db-track{
+  flex:1; height:10px; background:var(--border);
+  border-radius:5px; overflow:hidden;
+}
+.db-fill{ height:100%; border-radius:5px; }
+.db-num{ font-size:0.8rem; font-weight:700; min-width:48px; text-align:right; }
+.db-risk{ font-size:0.73rem; padding:0.2rem 0.65rem; border-radius:100px; font-weight:600; min-width:70px; text-align:center; }
+.risk-safe{ background:#e8f5ee; color:var(--success); }
+.risk-caution{ background:#fff8e1; color:var(--gold); }
+.risk-danger{ background:#fdecea; color:var(--red); }
+
+/* ─── ENGINEERS SECTION ──────────────────────────────── */
+.engineers-section{ background:white; }
+.eng-split{ display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:start; }
+.eng-text h2{ font-family:'Libre Baskerville',serif; font-size:2.2rem; line-height:1.2; margin-bottom:1rem; }
+.eng-text p{ color:var(--text-mid); font-size:0.97rem; font-weight:300; margin-bottom:1.5rem; line-height:1.7; }
+.career-pills{ display:flex; flex-wrap:wrap; gap:0.6rem; margin-top:1.5rem; }
+.career-pill{
+  background:var(--blue-light);
+  border:1px solid var(--sky);
+  border-radius:100px;
+  padding:0.4rem 1rem;
+  font-size:0.82rem; font-weight:500;
+  color:var(--blue); cursor:pointer;
+  transition:all .18s;
+  text-decoration:none;
+}
+.career-pill:hover{ background:var(--blue); color:white; border-color:var(--blue); }
+.eng-stats{
+  background:var(--navy);
+  border-radius:12px;
+  padding:2.5rem;
+}
+.eng-stats h4{
+  font-family:'Libre Baskerville',serif;
+  color:white; font-size:1.1rem; margin-bottom:1.75rem;
+}
+.eng-stat-grid{ display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+.eng-stat{
+  background:rgba(255,255,255,0.07);
+  border-radius:8px; padding:1.25rem;
+  text-align:center;
+}
+.eng-stat-num{
+  font-family:'Libre Baskerville',serif;
+  font-size:2rem; color:#72c3f0;
+  display:block; line-height:1;
+}
+.eng-stat-label{
+  font-size:0.76rem; color:rgba(255,255,255,0.5);
+  margin-top:0.4rem; display:block; line-height:1.4;
+}
+.eng-stat-desc{
+  margin-top:1.75rem;
+  font-size:0.82rem; color:rgba(255,255,255,0.45);
+  line-height:1.6; border-top:1px solid rgba(255,255,255,0.1);
+  padding-top:1.25rem;
+}
+
+/* ─── WORKING WORLD ──────────────────────────────────── */
+.work-section{ background:var(--off-white); }
+
+/* ─── CTA BANNER ─────────────────────────────────────── */
+.cta-section{
+  background:linear-gradient(135deg, var(--navy) 0%, #1363a6 100%);
+  padding:5rem 0;
+  text-align:center;
+  position:relative; overflow:hidden;
+}
+.cta-section::before{
+  content:'';
+  position:absolute; inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size:40px 40px;
+}
+.cta-inner{ position:relative; z-index:2; }
+.cta-inner h2{
+  font-family:'Libre Baskerville',serif;
+  font-size:clamp(1.9rem,3.5vw,2.7rem);
+  color:white; margin-bottom:1rem;
+}
+.cta-inner p{
+  color:rgba(255,255,255,0.62); font-size:1.05rem;
+  max-width:520px; margin:0 auto 2rem; font-weight:300;
+}
+.cta-btns{ display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; }
+
+/* ─── FOOTER ─────────────────────────────────────────── */
+footer{
+  background:var(--navy);
+  padding:4rem 0 2rem;
+  border-top:1px solid rgba(255,255,255,0.08);
+}
+.footer-grid{
+  display:grid; grid-template-columns:2fr 1fr 1fr 1fr;
+  gap:3rem; margin-bottom:3rem;
+}
+.footer-brand .foot-logo{
+  font-family:'Libre Baskerville',serif;
+  color:white; font-size:1.15rem;
+  margin-bottom:0.75rem; display:block;
+}
+.footer-brand p{
+  color:rgba(255,255,255,0.4); font-size:0.82rem;
+  font-weight:300; line-height:1.7; max-width:260px;
+}
+.footer-col h5{
+  color:white; font-size:0.78rem; font-weight:700;
+  letter-spacing:0.1em; text-transform:uppercase;
+  margin-bottom:1rem;
+}
+.footer-col ul{ list-style:none; display:flex; flex-direction:column; gap:0.55rem; }
+.footer-col a{
+  color:rgba(255,255,255,0.42); text-decoration:none;
+  font-size:0.85rem; transition:color .18s;
+}
+.footer-col a:hover{ color:#72c3f0; }
+.footer-bottom{
+  border-top:1px solid rgba(255,255,255,0.08);
+  padding-top:1.75rem;
+  display:flex; align-items:center; justify-content:space-between;
+  gap:1rem; flex-wrap:wrap;
+}
+.footer-bottom p{ color:rgba(255,255,255,0.3); font-size:0.78rem; }
+.footer-ince{
+  font-size:0.78rem; color:rgba(255,255,255,0.3);
+  display:flex; align-items:center; gap:0.5rem;
+}
+.footer-ince strong{ color:rgba(255,255,255,0.55); }
+
+/* ─── RESPONSIVE ─────────────────────────────────────── */
+@media(max-width:1024px){
+  .hero-inner{ grid-template-columns:1fr; }
+  .hero-visual{ display:none; }
+  .stats-inner{ grid-template-columns:repeat(2,1fr); }
+  .map-section-inner{ grid-template-columns:1fr; }
+  .eng-split{ grid-template-columns:1fr; }
+  .footer-grid{ grid-template-columns:1fr 1fr; }
+}
+@media(max-width:768px){
+  .container{ padding:0 1.25rem; }
+  .section{ padding:3.5rem 0; }
+  .grid-2,.grid-3,.grid-4{ grid-template-columns:1fr; }
+  .grid-2-3{ grid-template-columns:1fr; }
+  .stats-inner{ grid-template-columns:repeat(2,1fr); }
+  .nav-links{ display:none; }
+  .hero-content{ padding-bottom:3rem; }
+  .topbar-links{ display:none; }
+  .footer-grid{ grid-template-columns:1fr; gap:2rem; }
+  .footer-bottom{ flex-direction:column; align-items:flex-start; }
+}
+</style>
 </head>
 <body>
-    <div class="container align-items-center  h-100">
-        <div class="row">
-            <header class="text-center col-12">
-                <h1 class="text-uppercase"><strong>The BIGGEST startup event of the year</strong></h1>
-            </header>
-            <div class="buffer col-12"></div>
-            <section class="text-center col-12">
-               <a href="https://mailchi.mp/75d4f7de6cd9/blessadeiks-webpage"> <button class="btn btn-primary btn-xl">Find out</button></a>
-               
-            </section>
-            
-        </div>
+
+<!-- ══════════════════════════════════════════════════════
+  TOPBAR
+══════════════════════════════════════════════════════ -->
+<div class="topbar">
+  <div class="container topbar-inner">
+    <span>An initiative by the Institute of Noise Control Engineering (INCE)</span>
+    <nav class="topbar-links">
+      <a href="#">INCE Homepage</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+      <a href="#">Member Login</a>
+    </nav>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+  NAVBAR
+══════════════════════════════════════════════════════ -->
+<nav>
+  <div class="container nav-inner">
+    <a href="#" class="nav-logo">
+      <div class="nav-logo-icon">
+        <!-- Sound wave icon -->
+        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round">
+          <path d="M3 12h2M5 8v8M9 5v14M13 8v8M17 3v18M21 6v12"/>
+        </svg>
+      </div>
+      <div class="nav-logo-text">
+        A Quieter America
+        <span>INCE Public Outreach</span>
+      </div>
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="#dangers">Dangers of Noise</a></li>
+      <li class="has-sub"><a href="#community">Community Noise</a></li>
+      <li class="has-sub"><a href="#working">Working World</a></li>
+      <li><a href="#engineers">Noise Engineers</a></li>
+      <li><a href="#noise-map">Noise Map</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <a href="#" class="btn btn-outline">Resources</a>
+      <a href="#" class="btn btn-primary">Get Involved</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════════════════════
+  HERO
+══════════════════════════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-glow-2"></div>
+  <div class="container hero-inner">
+    <div class="hero-content">
+      <span class="tag tag-white">INCE — Institute of Noise Control Engineering</span>
+      <h1>Working Toward<br/><em>A Quieter America</em></h1>
+      <p>Noise pollution affects the health, productivity, and quality of life of millions of Americans. Explore our resources to understand the risks, your rights, and the professionals fighting for silence.</p>
+      <div class="hero-btns">
+        <a href="#dangers" class="btn btn-primary">Explore the Issues</a>
+        <a href="#noise-map" class="btn btn-white">View U.S. Noise Map</a>
+      </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" 
-    integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
-     crossorigin="anonymous"></script>
-     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" 
-     integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" 
-     crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" 
-    integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" 
-    crossorigin="anonymous"></script>
-        
-    </body>
+    <!-- MAP MOCKUP -->
+    <div class="hero-visual">
+      <div class="map-card">
+        <div class="map-card-header">
+          <span class="map-card-title">U.S. Community Noise Map</span>
+          <div class="live-badge"><div class="live-dot"></div> Live Data</div>
+        </div>
+        <div class="map-body">
+          <!-- SVG USA outline + heatmap blobs -->
+          <svg class="map-svg-bg" viewBox="0 0 500 280" xmlns="http://www.w3.org/2000/svg">
+            <rect width="500" height="280" fill="#0d1e32"/>
+            <!-- simplified US landmass -->
+            <path d="M60 200 L55 170 L45 155 L50 135 L60 125 L80 115 L100 108 L130 100 L160 95 L200 90 L240 88 L280 90 L320 88 L360 86 L390 90 L410 100 L420 110 L415 125 L400 140 L405 155 L395 168 L380 178 L360 182 L340 180 L320 178 L310 185 L300 195 L280 205 L260 210 L240 208 L220 205 L200 207 L185 215 L170 218 L155 215 L140 208 L120 210 L100 218 L80 220 L65 215 Z" fill="#132840" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+            <!-- Alaska stub -->
+            <path d="M55 230 L45 225 L40 235 L55 238 Z" fill="#132840" stroke="rgba(255,255,255,0.1)" stroke-width="0.8"/>
+            <!-- Hawaii stub -->
+            <ellipse cx="130" cy="250" rx="15" ry="6" fill="#132840" stroke="rgba(255,255,255,0.1)" stroke-width="0.8"/>
+            <!-- Heatmap blobs - noise hotspots -->
+            <ellipse cx="420" cy="115" rx="40" ry="28" fill="rgba(192,57,43,0.55)" filter="url(#blur)"/>
+            <ellipse cx="380" cy="145" rx="30" ry="22" fill="rgba(230,126,34,0.45)" filter="url(#blur)"/>
+            <ellipse cx="275" cy="100" rx="35" ry="24" fill="rgba(192,57,43,0.4)" filter="url(#blur)"/>
+            <ellipse cx="220" cy="140" rx="40" ry="28" fill="rgba(230,126,34,0.38)" filter="url(#blur)"/>
+            <ellipse cx="160" cy="130" rx="28" ry="20" fill="rgba(241,196,15,0.35)" filter="url(#blur)"/>
+            <ellipse cx="110" cy="150" rx="22" ry="16" fill="rgba(241,196,15,0.3)" filter="url(#blur)"/>
+            <ellipse cx="320" cy="95" rx="24" ry="18" fill="rgba(230,126,34,0.3)" filter="url(#blur)"/>
+            <defs>
+              <filter id="blur" x="-60%" y="-60%" width="220%" height="220%">
+                <feGaussianBlur stdDeviation="14"/>
+              </filter>
+            </defs>
+            <!-- state grid lines suggestion -->
+            <line x1="200" y1="88" x2="200" y2="208" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/>
+            <line x1="300" y1="88" x2="300" y2="195" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/>
+            <line x1="55" y1="150" x2="420" y2="150" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/>
+          </svg>
+          <!-- Legend -->
+          <div class="map-legend">
+            <div class="legend-row"><div class="legend-dot" style="background:#c0392b;"></div>High (70+ dB)</div>
+            <div class="legend-row"><div class="legend-dot" style="background:#e67e22;"></div>Moderate (60–70 dB)</div>
+            <div class="legend-row"><div class="legend-dot" style="background:#f1c40f;"></div>Low (&lt;60 dB)</div>
+          </div>
+        </div>
+        <a href="https://www.nonoise.org" target="_blank" class="map-visit-btn">
+          🌐 Visit Interactive Noise Map ↗
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+  STATS BAR
+══════════════════════════════════════════════════════ -->
+<div class="stats-bar">
+  <div class="container">
+    <div class="stats-inner">
+      <div class="stat-item">
+        <span class="stat-num">100M+</span>
+        <p class="stat-label">Americans exposed to harmful noise levels</p>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">$242B</span>
+        <p class="stat-label">Annual U.S. cost of noise-related health impacts</p>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">26M</span>
+        <p class="stat-label">Adults with noise-induced hearing loss</p>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">85 dB</span>
+        <p class="stat-label">Threshold at which hearing damage begins</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+  DANGERS OF EXCESSIVE NOISE
+══════════════════════════════════════════════════════ -->
+<section class="section db-section" id="dangers">
+  <div class="container">
+    <div class="section-header">
+      <span class="tag">Health Risks</span>
+      <h2>The Dangers of Excessive Noise</h2>
+      <p>Noise is more than a nuisance — it is a significant public health hazard with well-documented effects on hearing, cardiovascular health, sleep, and cognitive development.</p>
+    </div>
+
+    <div class="grid-2" style="margin-bottom:2.5rem;">
+      <a href="#" class="f-card">
+        <div class="f-card-icon">🔬</div>
+        <h3>Understanding Noise Pollution</h3>
+        <p>What is noise pollution, how is it measured, and what regulatory frameworks exist to protect citizens? A plain-language overview of the science and policy landscape.</p>
+        <span class="f-card-link">Explore the basics</span>
+      </a>
+      <a href="#" class="f-card">
+        <div class="f-card-icon">👂</div>
+        <h3>Your Hearing at Risk</h3>
+        <p>Noise-induced hearing loss (NIHL) is the most common occupational injury in the United States — and it is entirely preventable. Learn the warning signs and how to protect yourself.</p>
+        <span class="f-card-link">Protect your hearing</span>
+      </a>
+    </div>
+
+    <!-- dB reference scale -->
+    <div class="db-scale-wrap">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem;">
+        <div>
+          <h3 style="font-family:'Libre Baskerville',serif;font-size:1.1rem;margin-bottom:0.2rem;">Decibel Reference Scale</h3>
+          <p style="font-size:0.82rem;color:var(--text-light);">How everyday sounds compare to safe exposure thresholds</p>
+        </div>
+        <span class="tag" style="margin-bottom:0;">85 dB = Damage threshold</span>
+      </div>
+      <div class="db-row">
+        <span class="db-source">Whisper / Library</span>
+        <div class="db-track"><div class="db-fill" style="width:27%;background:#1a7f5a;"></div></div>
+        <span class="db-num" style="color:var(--success);">30 dB</span>
+        <span class="db-risk risk-safe">Safe</span>
+      </div>
+      <div class="db-row">
+        <span class="db-source">Normal Conversation</span>
+        <div class="db-track"><div class="db-fill" style="width:54%;background:#1a7f5a;"></div></div>
+        <span class="db-num" style="color:var(--success);">60 dB</span>
+        <span class="db-risk risk-safe">Safe</span>
+      </div>
+      <div class="db-row">
+        <span class="db-source">Heavy Traffic / Vacuum</span>
+        <div class="db-track"><div class="db-fill" style="width:72%;background:#b08800;"></div></div>
+        <span class="db-num" style="color:var(--gold);">80 dB</span>
+        <span class="db-risk risk-caution">Caution</span>
+      </div>
+      <div class="db-row">
+        <span class="db-source">Lawnmower / Alarm</span>
+        <div class="db-track"><div class="db-fill" style="width:80%;background:#c0392b;"></div></div>
+        <span class="db-num" style="color:var(--red);">90 dB</span>
+        <span class="db-risk risk-danger">Danger</span>
+      </div>
+      <div class="db-row">
+        <span class="db-source">Rock Concert / Siren</span>
+        <div class="db-track"><div class="db-fill" style="width:89%;background:#c0392b;"></div></div>
+        <span class="db-num" style="color:var(--red);">100 dB</span>
+        <span class="db-risk risk-danger">Danger</span>
+      </div>
+      <div class="db-row">
+        <span class="db-source">Jet Engine (nearby)</span>
+        <div class="db-track"><div class="db-fill" style="width:100%;background:#8e1a0e;"></div></div>
+        <span class="db-num" style="color:#8e1a0e;">120 dB</span>
+        <span class="db-risk risk-danger">Severe</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+  COMMUNITY NOISE
+══════════════════════════════════════════════════════ -->
+<section class="section" id="community">
+  <div class="container">
+    <div class="section-header">
+      <span class="tag">Where You Live</span>
+      <h2>Community Noise</h2>
+      <p>From flight paths overhead to the restaurant next door, noise shapes the quality of life in every neighborhood. Understand your local soundscape and your rights.</p>
+    </div>
+
+    <div class="grid-2-3">
+      <!-- Left: ordinance highlight -->
+      <div>
+        <div class="list-card" style="margin-bottom:1.25rem;">
+          <div class="list-card-header">
+            <h3>⚖️ Noise Ordinances</h3>
+            <p>Know your legal protections</p>
+          </div>
+          <a href="#" class="list-item">
+            <div class="list-item-icon">📋</div>
+            <div class="list-item-text">
+              <strong>Federal Noise Standards</strong>
+              <span>EPA and OSHA guidelines</span>
+            </div>
+            <span class="list-item-arrow">›</span>
+          </a>
+          <a href="#" class="list-item">
+            <div class="list-item-icon">🏙️</div>
+            <div class="list-item-text">
+              <strong>Local & Municipal Rules</strong>
+              <span>Quiet hours, zoning laws</span>
+            </div>
+            <span class="list-item-arrow">›</span>
+          </a>
+          <a href="#" class="list-item">
+            <div class="list-item-icon">📢</div>
+            <div class="list-item-text">
+              <strong>How to File a Complaint</strong>
+              <span>Step-by-step guidance</span>
+            </div>
+            <span class="list-item-arrow">›</span>
+          </a>
+        </div>
+        <a href="#" class="f-card" style="background:var(--navy);border-color:var(--navy);">
+          <div class="f-card-icon" style="background:rgba(114,195,240,0.12);">🗺️</div>
+          <h3 style="color:white;">Explore Your Local Noise Map</h3>
+          <p style="color:rgba(255,255,255,0.5);">See real-time community noise levels in your area and compare against federal standards.</p>
+          <span class="f-card-link" style="color:#72c3f0;">Open map ↗</span>
+        </a>
+      </div>
+
+      <!-- Right: topic grid -->
+      <div class="grid-2">
+        <a href="#" class="f-card">
+          <div class="f-card-icon">✈️</div>
+          <h3>Airports & Aviation</h3>
+          <p>Aircraft noise affects millions near airports. Learn about FAA programs, Part 150 studies, and how communities advocate for relief.</p>
+          <span class="f-card-link">Learn more</span>
+        </a>
+        <a href="#" class="f-card">
+          <div class="f-card-icon">🚗</div>
+          <h3>Vehicular Noise</h3>
+          <p>Traffic noise is the most prevalent source of environmental noise. Explore highway barriers, low-noise pavements, and speed limit impacts.</p>
+          <span class="f-card-link">Learn more</span>
+        </a>
+        <a href="#" class="f-card">
+          <div class="f-card-icon">🏠</div>
+          <h3>Noisy Neighbors</h3>
+          <p>What constitutes a nuisance, what the law says, and how mediation can help resolve disputes without costly legal action.</p>
+          <span class="f-card-link">Learn more</span>
+        </a>
+        <a href="#" class="f-card">
+          <div class="f-card-icon">🍽️</div>
+          <h3>Restaurant Noise</h3>
+          <p>Dining rooms are among the noisiest public environments. Discover acoustic design solutions and what establishments can do.</p>
+          <span class="f-card-link">Learn more</span>
+        </a>
+        <a href="#" class="f-card" style="grid-column:span 2;">
+          <div style="display:flex;gap:1rem;align-items:flex-start;">
+            <div class="f-card-icon" style="flex-shrink:0;">🔇</div>
+            <div>
+              <h3 style="margin-bottom:0.5rem;">Consumer Product Noise & QuietMark</h3>
+              <p style="margin-bottom:0.75rem;">Household appliances, power tools, and personal electronics contribute significantly to indoor noise. The QuietMark certification helps consumers choose quieter products.</p>
+              <span class="f-card-link">Explore QuietMark certified products</span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+  NOISE MAP SECTION
+══════════════════════════════════════════════════════ -->
+<section class="map-section" id="noise-map">
+  <div class="container map-section-inner">
+    <div class="map-section-text">
+      <span class="tag tag-white">Interactive Tool</span>
+      <h2>The U.S. Noise Map</h2>
+      <p>Visualize noise exposure across the country. Zoom into your city, identify hotspots near schools and hospitals, and understand how transportation infrastructure shapes your sonic environment.</p>
+      <p>This resource is made possible through collaboration between INCE, the EPA, and the Department of Transportation. Data is updated regularly.</p>
+      <a href="https://www.nonoise.org" target="_blank" class="btn btn-white" style="margin-top:1rem;">Visit the Interactive Map ↗</a>
+    </div>
+
+    <div class="big-map">
+      <div class="big-map-toolbar">
+        <div class="tb-dot" style="background:#ff5f57;"></div>
+        <div class="tb-dot" style="background:#febc2e;"></div>
+        <div class="tb-dot" style="background:#28c840;"></div>
+        <span style="margin-left:0.75rem;font-size:0.78rem;color:rgba(255,255,255,0.4);">nonoise.org — U.S. National Noise Map</span>
+        <div class="live-badge" style="margin-left:auto;"><div class="live-dot"></div> Live</div>
+      </div>
+      <div class="big-map-canvas">
+        <svg viewBox="0 0 600 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+          <rect width="600" height="280" fill="#0d1e32"/>
+          <path d="M70 205 L65 175 L55 160 L60 140 L72 128 L95 118 L120 110 L155 104 L195 98 L240 94 L285 92 L330 94 L375 92 L415 96 L445 108 L462 120 L458 137 L443 152 L448 168 L437 180 L420 190 L398 195 L374 193 L352 190 L340 198 L328 210 L305 222 L280 228 L257 225 L232 222 L212 224 L196 233 L180 236 L163 233 L148 225 L126 228 L104 236 L85 238 L72 232 Z" fill="#132840" stroke="rgba(255,255,255,0.1)" stroke-width="0.8"/>
+          <!-- Heatmap -->
+          <ellipse cx="452" cy="125" rx="52" ry="36" fill="rgba(192,57,43,0.6)" filter="url(#b2)"/>
+          <ellipse cx="415" cy="158" rx="38" ry="28" fill="rgba(230,126,34,0.5)" filter="url(#b2)"/>
+          <ellipse cx="310" cy="100" rx="45" ry="30" fill="rgba(192,57,43,0.45)" filter="url(#b2)"/>
+          <ellipse cx="250" cy="148" rx="50" ry="35" fill="rgba(230,126,34,0.4)" filter="url(#b2)"/>
+          <ellipse cx="180" cy="140" rx="36" ry="26" fill="rgba(241,196,15,0.38)" filter="url(#b2)"/>
+          <ellipse cx="130" cy="160" rx="28" ry="20" fill="rgba(241,196,15,0.32)" filter="url(#b2)"/>
+          <ellipse cx="370" cy="102" rx="30" ry="22" fill="rgba(230,126,34,0.35)" filter="url(#b2)"/>
+          <!-- city labels -->
+          <circle cx="452" cy="115" r="3" fill="white" opacity="0.6"/>
+          <text x="458" y="113" fill="rgba(255,255,255,0.45)" font-size="8" font-family="Inter,sans-serif">New York</text>
+          <circle cx="248" cy="140" r="3" fill="white" opacity="0.6"/>
+          <text x="254" y="138" fill="rgba(255,255,255,0.45)" font-size="8" font-family="Inter,sans-serif">Chicago</text>
+          <circle cx="135" cy="195" r="3" fill="white" opacity="0.6"/>
+          <text x="141" y="193" fill="rgba(255,255,255,0.45)" font-size="8" font-family="Inter,sans-serif">Los Angeles</text>
+          <defs>
+            <filter id="b2" x="-80%" y="-80%" width="260%" height="260%">
+              <feGaussianBlur stdDeviation="18"/>
+            </filter>
+          </defs>
+          <!-- Legend bar -->
+          <defs>
+            <linearGradient id="heatGrad" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#1a7f5a"/>
+              <stop offset="50%" stop-color="#f1c40f"/>
+              <stop offset="100%" stop-color="#c0392b"/>
+            </linearGradient>
+          </defs>
+          <rect x="20" y="248" width="120" height="8" rx="4" fill="url(#heatGrad)"/>
+          <text x="20" y="268" fill="rgba(255,255,255,0.4)" font-size="7" font-family="Inter,sans-serif">Quiet (40 dB)</text>
+          <text x="108" y="268" fill="rgba(255,255,255,0.4)" font-size="7" font-family="Inter,sans-serif">Loud (80 dB)</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+  NOISE IN THE WORKING WORLD
+══════════════════════════════════════════════════════ -->
+<section class="section work-section" id="working">
+  <div class="container">
+    <div class="section-header">
+      <span class="tag">Occupational Noise</span>
+      <h2>Noise in the Working World</h2>
+      <p>The workplace is one of the most significant sources of damaging noise exposure. Different environments present unique challenges — and solutions.</p>
+    </div>
+
+    <div class="grid-4">
+      <a href="#" class="f-card">
+        <div class="f-card-icon">🏫</div>
+        <h3>Schools</h3>
+        <p>Classroom acoustics directly affect learning outcomes. Discover ANSI standards for educational spaces and what your district should be doing.</p>
+        <span class="f-card-link">Read more</span>
+      </a>
+      <a href="#" class="f-card">
+        <div class="f-card-icon">🏭</div>
+        <h3>Industrial</h3>
+        <p>Manufacturing floors and heavy industry expose workers to the highest noise levels. OSHA permissible exposure limits and hearing conservation programs explained.</p>
+        <span class="f-card-link">Read more</span>
+      </a>
+      <a href="#" class="f-card">
+        <div class="f-card-icon">💼</div>
+        <h3>Office Environments</h3>
+        <p>Open-plan offices create cognitive fatigue and reduce productivity. Learn about speech privacy, acoustic panels, and sound masking systems.</p>
+        <span class="f-card-link">Read more</span>
+      </a>
+      <a href="#" class="f-card">
+        <div class="f-card-icon">🏗️</div>
+        <h3>Construction Sites</h3>
+        <p>Construction noise affects both workers and nearby communities. Explore best-practice noise controls, barriers, and scheduling strategies.</p>
+        <span class="f-card-link">Read more</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+  WHAT NOISE CONTROL ENGINEERS DO
+══════════════════════════════════════════════════════ -->
+<section class="section engineers-section" id="engineers">
+  <div class="container">
+    <div class="eng-split">
+      <div class="eng-text">
+        <span class="tag">The Profession</span>
+        <h2>What Noise Control Engineers Do</h2>
+        <p>Noise control engineering is a specialized discipline at the intersection of physics, acoustics, mechanical engineering, and public health. These professionals design quieter products, environments, and systems — improving life for millions.</p>
+        <p>Whether working in product design, urban planning, environmental consulting, or research, noise control engineers bring measurable improvements to the soundscapes we all share.</p>
+        <a href="#" class="btn btn-primary" style="margin-top:0.5rem;">Learn About the Field</a>
+        <div>
+          <p style="font-size:0.82rem;font-weight:600;color:var(--text-light);text-transform:uppercase;letter-spacing:0.08em;margin-top:2rem;margin-bottom:0.75rem;">Career Pathways</p>
+          <div class="career-pills">
+            <a href="#" class="career-pill">Acoustical Consultant</a>
+            <a href="#" class="career-pill">Environmental Engineer</a>
+            <a href="#" class="career-pill">Product Design</a>
+            <a href="#" class="career-pill">Architectural Acoustics</a>
+            <a href="#" class="career-pill">Transportation Noise</a>
+            <a href="#" class="career-pill">OSHA Compliance</a>
+            <a href="#" class="career-pill">Research & Academia</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="eng-stats">
+        <h4>Noise Control Engineering — By the Numbers</h4>
+        <div class="eng-stat-grid">
+          <div class="eng-stat">
+            <span class="eng-stat-num">$95K</span>
+            <span class="eng-stat-label">Median annual salary (U.S.)</span>
+          </div>
+          <div class="eng-stat">
+            <span class="eng-stat-num">+8%</span>
+            <span class="eng-stat-label">Job growth projected (10-yr)</span>
+          </div>
+          <div class="eng-stat">
+            <span class="eng-stat-num">3,000+</span>
+            <span class="eng-stat-label">INCE members worldwide</span>
+          </div>
+          <div class="eng-stat">
+            <span class="eng-stat-num">50+</span>
+            <span class="eng-stat-label">Years of INCE leadership</span>
+          </div>
+        </div>
+        <p class="eng-stat-desc">INCE is the professional society representing noise control engineers in the United States and around the world. Members include engineers, consultants, researchers, and educators dedicated to reducing unwanted sound.</p>
+        <a href="#" class="btn btn-white" style="margin-top:1.25rem;width:100%;justify-content:center;">Explore INCE Membership →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+  CTA
+══════════════════════════════════════════════════════ -->
+<section class="cta-section">
+  <div class="container cta-inner">
+    <span class="tag tag-white">Take Action</span>
+    <h2>Help Build a Quieter America</h2>
+    <p>Whether you're a student, professional, community advocate, or concerned citizen — there is a role for you in the fight against noise pollution.</p>
+    <div class="cta-btns">
+      <a href="#" class="btn btn-white">Join INCE</a>
+      <a href="#" class="btn btn-outline" style="border-color:rgba(255,255,255,0.3);color:white;">Download Resources</a>
+      <a href="#" class="btn btn-outline" style="border-color:rgba(255,255,255,0.3);color:white;">Contact Us</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+  FOOTER
+══════════════════════════════════════════════════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="foot-logo">A Quieter America</span>
+        <p>A public education initiative of the Institute of Noise Control Engineering (INCE). Dedicated to raising awareness about noise pollution and its effects on health, wellbeing, and productivity.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Explore</h5>
+        <ul>
+          <li><a href="#">Dangers of Noise</a></li>
+          <li><a href="#">Your Hearing</a></li>
+          <li><a href="#">Community Noise</a></li>
+          <li><a href="#">Noise Ordinances</a></li>
+          <li><a href="#">Noise Map</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Working World</h5>
+        <ul>
+          <li><a href="#">Schools</a></li>
+          <li><a href="#">Industrial</a></li>
+          <li><a href="#">Office</a></li>
+          <li><a href="#">Construction</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>INCE</h5>
+        <ul>
+          <li><a href="#">About INCE</a></li>
+          <li><a href="#">What Engineers Do</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Membership</a></li>
+          <li><a href="#">Publications</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 A Quieter America. An initiative of INCE-USA.</p>
+      <div class="footer-ince">
+        <strong>Built with Astra Pro / Kadence / Blocksy</strong> · WordPress
+      </div>
+      <div style="display:flex;gap:1.5rem;">
+        <a href="#" style="color:rgba(255,255,255,0.3);font-size:0.78rem;text-decoration:none;">Privacy Policy</a>
+        <a href="#" style="color:rgba(255,255,255,0.3);font-size:0.78rem;text-decoration:none;">Accessibility</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
 </html>
